@@ -1,0 +1,95 @@
+/* Floating Navbar Container */
+#searchSwitcherNavbar {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 0.5s ease-out;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Animation Effects */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Navbar Buttons */
+#navbarContainer button {
+  background-color: #e27a4a;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  margin: 5px 0;
+  cursor: pointer;
+  border-radius: 5px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Hover Effects */
+#navbarContainer button:hover {
+  background-color: #bd3935;
+  transform: translateY(-2px);
+}
+
+/* Button Active Effects */
+#navbarContainer button:active {
+  transform: translateY(2px);
+}
+
+/* Navbar Container */
+#navbarContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Tooltip for better UX */
+#navbarContainer button[data-tooltip]:hover:after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin-left: 10px;
+  padding: 5px 10px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 3px;
+  white-space: nowrap;
+  transform: translateY(-50%);
+  animation: tooltipFade 0.3s;
+  pointer-events: none;
+  z-index: 1001;
+}
+
+@keyframes tooltipFade {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Adding transitions for smooth removal */
+#searchSwitcherNavbar.exiting {
+  opacity: 0;
+  transform: translateY(-20px);
+}

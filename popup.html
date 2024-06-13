@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div id="navbar">
+    <button id="homeButton">Home</button>
+    <button id="googleButton">Google</button>
+    <button id="bingButton">Bing</button>
+    <button id="duckduckgoButton">DuckDuckGo</button>
+  </div>
+  <div id="container">
+    <input type="text" id="searchInput" placeholder="Enter search query...">
+    <div id="searchEngines">
+      <label>
+        <input type="radio" name="engine" value="google" checked>
+        Google
+      </label>
+      <label>
+        <input type="radio" name="engine" value="bing">
+        Bing
+      </label>
+      <label>
+        <input type="radio" name="engine" value="duckduckgo">
+        DuckDuckGo
+      </label>
+    </div>
+    <button id="searchButton">Search</button>
+    <div id="results"></div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
