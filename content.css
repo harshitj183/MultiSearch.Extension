@@ -1,9 +1,40 @@
+:root {
+  /* Light Mode Colors */
+  --primary-100: #4285f4;
+  --primary-200: #002fa7;
+  --primary-300: #dffffd;
+  --accent-100: #8a2be2;
+  --accent-200: #ccccff;
+  --text-100: #1f305e;
+  --text-200: #4d598c;
+  --bg-100: #d7e8f9;
+  --bg-200: #afdbf5;
+  --bg-300: #191970;
+ 
+
+/* Light Mode Styles */
+body.light-mode {
+  --primary-100: var(--primary-100);
+  --primary-200: var(--primary-200);
+  --primary-300: var(--primary-300);
+  --accent-100: var(--accent-100);
+  --accent-200: var(--accent-200);
+  --text-100: var(--text-100);
+  --text-200: var(--text-200);
+  --bg-100: var(--bg-100);
+  --bg-200: var(--bg-200);
+  --bg-300: var(--bg-300);
+
+  background-color: var(--bg-100);
+  color: var(--text-100);
+}
+ 
 /* Floating Navbar Container */
 #searchSwitcherNavbar {
   position: fixed;
   top: 20px;
   right: 20px;
-  background-color: #fff;
+  background-color: var(--bg-100); /* Adjust as needed */
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
@@ -15,21 +46,9 @@
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* Animation Effects */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* Navbar Buttons */
 #navbarContainer button {
-  background-color: #e27a4a;
+  background-color: var(--primary-100); /* Adjust as needed */
   color: #fff;
   border: none;
   padding: 10px 15px;
@@ -43,20 +62,13 @@
 
 /* Hover Effects */
 #navbarContainer button:hover {
-  background-color: #bd3935;
+  background-color: var(--primary-200); /* Adjust as needed */
   transform: translateY(-2px);
 }
 
 /* Button Active Effects */
 #navbarContainer button:active {
   transform: translateY(2px);
-}
-
-/* Navbar Container */
-#navbarContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 /* Tooltip for better UX */
@@ -91,5 +103,5 @@
 /* Adding transitions for smooth removal */
 #searchSwitcherNavbar.exiting {
   opacity: 0;
-  transform: translateY(-20px);
+  transform: translate(-20px);
 }

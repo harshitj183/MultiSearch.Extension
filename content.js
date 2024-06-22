@@ -56,3 +56,39 @@ function switchSearchEngine(engine) {
     window.location.href = newUrl.href;
   }, 300); // Match the transition duration
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Check if dark mode is preferred by the user
+const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+// Function to set the theme based on preference
+const setTheme = (darkModeOn) => {
+  const body = document.body;
+  if (darkModeOn) {
+    body.classList.add("dark-mode");
+    body.classList.remove("light-mode");
+  } else {
+    body.classList.add("light-mode");
+    body.classList.remove("dark-mode");
+  }
+};
+
+// Initial theme based on user preference
+setTheme(prefersDarkScheme.matches);
+
+// Listen for changes in user preference
+prefersDarkScheme.addEventListener("change", (e) => {
+  setTheme(e.matches);
+});
