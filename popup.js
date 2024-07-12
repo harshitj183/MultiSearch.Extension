@@ -18,6 +18,9 @@ function searchQuery(query, engine) {
     case 'duckduckgo':
       url = `https://duckduckgo.com/?q=${query}`;
       break;
+      case 'yandex':
+        url = `https://yandex.com/search/?text=${query}`;
+        break;
     default:
       url = `https://www.google.com/search?q=${query}`;
   }
@@ -43,6 +46,10 @@ document.getElementById('duckduckgoButton').addEventListener('click', function()
   navigateTo('duckduckgo');
 });
 
+document.getElementById('yandexButton').addEventListener('click', function() {
+  navigateTo('yandex');
+});
+
 function navigateTo(engine) {
   let url;
   switch (engine) {
@@ -54,6 +61,9 @@ function navigateTo(engine) {
       break;
     case 'duckduckgo':
       url = `https://duckduckgo.com/`;
+      break;
+      case 'yandex':
+      url = `https://yandex.com/`;
       break;
     default:
       url = `https://www.google.com/`;

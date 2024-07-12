@@ -6,6 +6,7 @@ navbar.innerHTML = `
     <button id="switchToGoogle" data-tooltip="Search with Google">Google</button>
     <button id="switchToBing" data-tooltip="Search with Bing">Bing</button>
     <button id="switchToDuckDuckGo" data-tooltip="Search with DuckDuckGo">DuckDuckGo</button>
+    <button id="switchToYandex" data-tooltip="Search with Yandex">Yandex</button>
   </div>
 `;
 document.body.appendChild(navbar);
@@ -20,35 +21,42 @@ document.getElementById('switchToBing').addEventListener('click', function() {
 document.getElementById('switchToDuckDuckGo').addEventListener('click', function() {
   switchSearchEngine('duckduckgo');
 });
+document.getElementById('switchToYandex').addEventListener('click', function() {
+  switchSearchEngine('yandex');
+});
 
 // Get the current query and switch search engine
 function switchSearchEngine(engine) {
   const currentUrl = new URL(window.location.href);
   const queryParams = currentUrl.searchParams;
-  const query = queryParams.get('q');
+  const query = queryParams.get('q') || ''; // Default to empty string if 'q' is null
 
   let newUrl;
   switch (engine) {
     case 'google':
       newUrl = new URL('https://www.google.com/search');
+      newUrl.searchParams.set('q', query);
       break;
     case 'bing':
       newUrl = new URL('https://www.bing.com/search');
+      newUrl.searchParams.set('q', query);
       break;
     case 'duckduckgo':
       newUrl = new URL('https://duckduckgo.com/');
+      newUrl.searchParams.set('q', query);
+      break;
+    case 'yandex':
+      newUrl = new URL('https://yandex.com/search');
+      newUrl.searchParams.set('text', query);
       break;
   }
 
-  // Preserve query parameters
+  // Preserve query parameters except 'q' (handled separately)
   queryParams.forEach((value, key) => {
     if (key !== 'q') {
       newUrl.searchParams.set(key, value);
     }
   });
-
-  // Set the new query parameter
-  newUrl.searchParams.set('q', query);
 
   // Remove navbar before navigating
   navbar.classList.add('exiting');
@@ -56,19 +64,6 @@ function switchSearchEngine(engine) {
     window.location.href = newUrl.href;
   }, 300); // Match the transition duration
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // Check if dark mode is preferred by the user
 const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");

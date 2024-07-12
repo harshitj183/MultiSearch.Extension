@@ -11,9 +11,12 @@
   "content_scripts": [
     {
       "matches": [
-        "*://*.google.com/*",
+        "*://*.google.com/search*",
         "*://*.bing.com/*",
-        "*://*.duckduckgo.com/*"
+        "*://*.duckduckgo.com/*",
+        "*://*.yandex.com/search*",
+        "*://*.yandex.ru/search*",
+        "*://ya.ru/search*"
       ],
       "js": ["content.js"],
       "css": ["content.css"]
