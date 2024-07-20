@@ -1,10 +1,9 @@
-
-
-
 # MultiSearchExtension (Version 2.1.0)
 
 ## Description
 MultiSearchExtension is a powerful browser extension that allows users to perform multiple searches across different search engines simultaneously. This extension is designed to enhance productivity by providing quick and comprehensive search results from various sources.
+
+![GitHub Repo Card](repo-card.png)
 
 ## Features
 - Perform searches across multiple search engines at once.
@@ -34,4 +33,3 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
 
 ## Contact
 For any questions or suggestions, please open an issue or contact the repository owner.
-<!-- https://chatgpt.com/c/65a33cca-9674-4bfc-a016-36aaa5a0bba7 -->
