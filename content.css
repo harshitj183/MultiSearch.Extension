@@ -12,6 +12,9 @@
   --bg-300: #191970;
  
 
+
+
+  
 /* Light Mode Styles */
 body.light-mode {
   --primary-100: var(--primary-100);
