@@ -3,6 +3,8 @@
 ## Description
 MultiSearchExtension is a powerful browser extension that allows users to perform multiple searches across different search engines simultaneously. This extension is designed to enhance productivity by providing quick and comprehensive search results from various sources.
 
+
+
 ![GitHub Repo Card](repo-card.png)
 
 ## Features
