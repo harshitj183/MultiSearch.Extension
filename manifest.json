@@ -12,7 +12,7 @@
     {
       "matches": [
         "*://*.google.com/search*",
-        "*://*.google.co*/search*",  // Adding co domains for Google
+        "*://*.google.co*/search*",
         "*://*.bing.com/*",
         "*://*.duckduckgo.com/*",
         "*://*.yandex.com/search*",
@@ -27,14 +27,14 @@
     "service_worker": "background.js"
   },
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
     "default_icon": {
       "16": "icons/icon16.png",
       "48": "icons/icon48.png",
       "128": "icons/icon128.png"
     }
-    },
-    "icons": {
+  },
+  "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
