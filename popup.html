@@ -4,38 +4,51 @@
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-  <div id="navbar">
-    <button id="homeButton">Home</button>
-    <button id="googleButton">Google</button>
-    <button id="bingButton">Bing</button>
-    <button id="duckduckgoButton">DuckDuckGo</button>
-    <button id="yandexButton">Yandex</button>
+  <div class="app">
+    <header class="app__header">
+      <div>
+        <p class="app__eyebrow">MultiSearch</p>
+        <h1 class="app__title">Search faster across engines</h1>
+      </div>
+      <div class="app__quick-actions" id="navbar">
+        <button id="homeButton" class="chip chip--muted">Home</button>
+        <button id="googleButton" class="chip">Google</button>
+        <button id="bingButton" class="chip">Bing</button>
+        <button id="duckduckgoButton" class="chip">DuckDuckGo</button>
+        <button id="yandexButton" class="chip">Yandex</button>
+      </div>
+    </header>
+
+    <main id="container" class="card">
+      <label class="field">
+        <span class="field__label">Search query</span>
+        <input type="text" id="searchInput" placeholder="Enter search query...">
+      </label>
+
+      <div id="searchEngines" class="engine-grid">
+        <label class="engine-option">
+          <input type="radio" name="engine" value="google" checked>
+          <span>Google</span>
+        </label>
+        <label class="engine-option">
+          <input type="radio" name="engine" value="bing">
+          <span>Bing</span>
+        </label>
+        <label class="engine-option">
+          <input type="radio" name="engine" value="duckduckgo">
+          <span>DuckDuckGo</span>
+        </label>
+        <label class="engine-option">
+          <input type="radio" name="engine" value="yandex">
+          <span>Yandex</span>
+        </label>
+      </div>
+
+      <button id="searchButton" class="primary-button">Search</button>
+      <div id="results" class="results"></div>
+    </main>
   </div>
-  <div id="container">
-    <input type="text" id="searchInput" placeholder="Enter search query...">
-    <div id="searchEngines">
-      <label>
-        <input type="radio" name="engine" value="google" checked>
-        Google
-      </label>
-      <label>
-        <input type="radio" name="engine" value="bing">
-        Bing
-      </label>
-      <label>
-        <input type="radio" name="engine" value="duckduckgo">
-        DuckDuckGo
-      </label>
-       <label>
-      <input type="radio" name="engine" value="yandex">
-        Yandex
-      </label>
-    </div>
-    <button id="searchButton">Search</button>
-    <div id="results"></div>
-  </div>
- 
- 
+
   <script src="popup.js"></script>
 </body>
 </html>
