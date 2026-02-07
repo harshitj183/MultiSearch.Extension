@@ -10,11 +10,10 @@
   --bg-100: #d7e8f9;
   --bg-200: #afdbf5;
   --bg-300: #191970;
- 
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --border-color: rgba(0, 0, 0, 0.08);
+}
 
-
-
-  
 /* Light Mode Styles */
 body.light-mode {
   --primary-100: var(--primary-100);
@@ -31,80 +30,395 @@ body.light-mode {
   background-color: var(--bg-100);
   color: var(--text-100);
 }
- 
-/* Floating Navbar Container */
+
+/* Floating Navbar Container - Improved UX */
 #searchSwitcherNavbar {
   position: fixed;
   top: 20px;
   right: 20px;
-  background-color: var(--bg-100); /* Adjust as needed */
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
+  background: var(--bg-100);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px var(--shadow-color),
+    0 1px 3px rgba(0, 0, 0, 0.05);
+  z-index: 10000;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  animation: slideInSmooth 0.3s ease-out;
+  transition: all 0.2s ease;
+  cursor: grab;
+  border: 2px solid var(--border-color);
+  overflow: hidden;
+  min-width: 160px;
+  max-width: 200px;
+}
+
+#searchSwitcherNavbar:hover {
+  box-shadow: 0 6px 24px var(--shadow-color),
+    0 2px 6px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+  border-color: var(--primary-100);
+}
+
+#searchSwitcherNavbar:active {
+  cursor: grabbing;
+}
+
+/* Drag Handle - Better UX */
+
+
+/* Navbar Container - Better Spacing */
+#navbarContainer {
   padding: 10px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  animation: fadeIn 0.5s ease-out;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  gap: 6px;
 }
 
-/* Navbar Buttons */
-#navbarContainer button {
-  background-color: var(--primary-100); /* Adjust as needed */
-  color: #fff;
+/* Navbar Buttons - Professional Blue Theme */
+#navbarContainer .engine-btn {
+  background: var(--primary-100) !important;
+  /* Professional Blue */
+  color: #ffffff !important;
   border: none;
-  padding: 10px 15px;
-  margin: 5px 0;
+  padding: 8px 14px;
   cursor: pointer;
-  border-radius: 5px;
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  transition: background-color 0.3s, transform 0.3s;
+  border-radius: 8px;
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(66, 133, 244, 0.2);
+  letter-spacing: 0.2px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
 }
 
-/* Hover Effects */
-#navbarContainer button:hover {
-  background-color: var(--primary-200); /* Adjust as needed */
+.engine-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  border-radius: 2px;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+/* Ensure images scale correctly */
+img.engine-icon {
+  object-fit: contain;
+}
+
+/* Ensure inline SVGs behave */
+svg.engine-icon {
+  display: block;
+  fill: currentColor;
+  /* Allow inheriting color if needed, though mostly hardcoded in SVG */
+}
+
+/* Button icon styling for widget */
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.btn-icon img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  display: block;
+}
+
+.btn-text {
+  flex: 1;
+  white-space: nowrap;
+}
+
+/* Dark Mode Button Styles */
+.dark-mode #navbarContainer .engine-btn {
+  background: var(--primary-200) !important;
+  /* Darker blue for dark mode */
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Ripple effect on click */
+#navbarContainer .engine-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  /* White ripple for blue bg */
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+  pointer-events: none;
+}
+
+#navbarContainer .engine-btn:active::before {
+  width: 250px;
+  height: 250px;
+}
+
+/* Hover Effects - Richer Blue */
+#navbarContainer .engine-btn:hover {
+  background: #3367d6 !important;
+  /* Slightly Darker Blue */
   transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(66, 133, 244, 0.3);
+  color: #ffffff !important;
+}
+
+.dark-mode #navbarContainer .engine-btn:hover {
+  background: #1a73e8 !important;
+  /* Brighter accent for dark mode */
 }
 
 /* Button Active Effects */
-#navbarContainer button:active {
-  transform: translateY(2px);
+#navbarContainer .engine-btn:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
-/* Tooltip for better UX */
-#navbarContainer button[data-tooltip]:hover:after {
+/* Custom engines get the default primary color, or we can add a specific class */
+
+/* Tooltip - Improved Design */
+#navbarContainer button[data-tooltip] {
+  position: relative;
+}
+
+#navbarContainer button[data-tooltip]:hover::after {
   content: attr(data-tooltip);
   position: absolute;
   top: 50%;
-  left: 100%;
-  margin-left: 10px;
-  padding: 5px 10px;
-  background: rgba(0, 0, 0, 0.8);
+  left: calc(100% + 12px);
+  padding: 6px 10px;
+  background: rgba(31, 48, 94, 0.95);
   color: #fff;
-  border-radius: 3px;
+  border-radius: 6px;
   white-space: nowrap;
   transform: translateY(-50%);
-  animation: tooltipFade 0.3s;
+  animation: tooltipFadeIn 0.2s ease;
   pointer-events: none;
-  z-index: 1001;
+  z-index: 10001;
+  font-size: 11px;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-@keyframes tooltipFade {
+/* Arrow for tooltip */
+#navbarContainer button[data-tooltip]:hover::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 6px);
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right: 6px solid rgba(31, 48, 94, 0.95);
+  transform: translateY(-50%);
+  z-index: 10001;
+  animation: tooltipFadeIn 0.2s ease;
+}
+
+@keyframes tooltipFadeIn {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-50%) translateX(-5px);
   }
+
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+@keyframes slideInSmooth {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* Adding transitions for smooth removal */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Exit animation - Top to Bottom */
 #searchSwitcherNavbar.exiting {
   opacity: 0;
-  transform: translate(-20px);
+  transform: translateY(30px) scale(0.95);
+  transition: all 0.3s ease;
+}
+
+/* Minimize/Maximize Button - Better UX */
+#toggleMinimize {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  z-index: 10;
+  color: var(--text-200);
+  font-weight: bold;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#toggleMinimize:hover {
+  background: var(--primary-100);
+  color: white;
+  transform: scale(1.15);
+  box-shadow: 0 2px 6px rgba(66, 133, 244, 0.3);
+  border-color: var(--primary-100);
+}
+
+#toggleMinimize:active {
+  transform: scale(1.05);
+}
+
+/* Minimized state - Cleaner */
+#searchSwitcherNavbar.minimized {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  padding: 0;
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+#searchSwitcherNavbar.minimized:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px var(--shadow-color);
+}
+
+#searchSwitcherNavbar.minimized #navbarContainer,
+#searchSwitcherNavbar.minimized #navbarDragHandle {
+  display: none;
+}
+
+#searchSwitcherNavbar.minimized #toggleMinimize {
+  position: static;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  font-size: 18px;
+  background: var(--primary-100);
+  color: white;
+  border: 2px solid white;
+}
+
+#searchSwitcherNavbar.minimized #toggleMinimize:hover {
+  background: var(--primary-200);
+  transform: rotate(90deg);
+  /* Kept original transform */
+  font-size: 20px;
+  /* Added font-size as a separate property */
+}
+
+/* Widget Size Variants */
+#searchSwitcherNavbar.size-small {
+  min-width: 140px;
+  max-width: 160px;
+}
+
+#searchSwitcherNavbar.size-small #navbarContainer button {
+  padding: 8px 12px;
+  font-size: 12px;
+}
+
+#searchSwitcherNavbar.size-small #navbarDragHandle {
+  padding: 8px;
+  font-size: 14px;
+}
+
+#searchSwitcherNavbar.size-medium {
+  min-width: 160px;
+  max-width: 200px;
+}
+
+#searchSwitcherNavbar.size-large {
+  min-width: 200px;
+  max-width: 240px;
+}
+
+#searchSwitcherNavbar.size-large #navbarContainer button {
+  padding: 12px 20px;
+  font-size: 14px;
+}
+
+#searchSwitcherNavbar.size-large #navbarDragHandle {
+  padding: 12px;
+  font-size: 18px;
+}
+
+/* Hide tooltips when disabled */
+#searchSwitcherNavbar.no-tooltips button[data-tooltip]:hover::after,
+#searchSwitcherNavbar.no-tooltips button[data-tooltip]:hover::before {
+  display: none !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #searchSwitcherNavbar {
+    min-width: 140px;
+    max-width: 180px;
+  }
+
+  #navbarContainer button {
+    padding: 9px 14px;
+    font-size: 12px;
+  }
+
+  #navbarDragHandle {
+    padding: 8px;
+    font-size: 14px;
+  }
+}
+
+/* Focus states for accessibility */
+#navbarContainer button:focus {
+  outline: 2px solid var(--primary-100);
+  outline-offset: 2px;
+}
+
+#toggleMinimize:focus {
+  outline: 2px solid var(--primary-100);
+  outline-offset: 1px;
+}
+
+/* Smooth scrolling if needed */
+* {
+  scroll-behavior: smooth;
 }

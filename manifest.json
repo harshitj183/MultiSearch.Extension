@@ -1,40 +1,42 @@
 {
   "manifest_version": 3,
   "name": "Multi Search Engine Widget",
-  "version": "1.0",
-  "description": "Add a floating search engine switcher to search results pages.",
+  "version": "1.4",
+  "description": "Quickly switch between search engines while browsing.",
+  "author": "Harshit Jaiswal",
+  "homepage_url": "https://www.harshitj183.in",
   "permissions": [
     "activeTab",
     "tabs",
-    "storage"
+    "storage",
+    "notifications",
+    "contextMenus"
   ],
   "content_scripts": [
     {
       "matches": [
-        "*://*.google.com/search*",
-        "*://*.google.co*/search*",  // Adding co domains for Google
-        "*://*.bing.com/*",
-        "*://*.duckduckgo.com/*",
-        "*://*.yandex.com/search*",
-        "*://*.yandex.ru/search*",
-        "*://ya.ru/search*"
+        "<all_urls>"
       ],
-      "js": ["content.js"],
-      "css": ["content.css"]
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "content.css"
+      ]
     }
   ],
   "background": {
     "service_worker": "background.js"
   },
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
     "default_icon": {
       "16": "icons/icon16.png",
       "48": "icons/icon48.png",
       "128": "icons/icon128.png"
     }
-    },
-    "icons": {
+  },
+  "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
