@@ -8,6 +8,7 @@
 
 ---
 
+
 ## See it in Action
 
 ![MultiSearch Extension Demo](docs/assets/demo.gif)
