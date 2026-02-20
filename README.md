@@ -17,7 +17,7 @@
 ---
 
 ## Screenshots
-
+---
 ### Extension Popup
 ![Extension Menu](docs/assets/widget-ui.png)
 *Easily add, remove, and manage your favorite search engines.*
