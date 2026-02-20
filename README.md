@@ -65,6 +65,16 @@
 
 ## Installation
 
+### Quick Open (Local Preview)
+
+If you just want to quickly open the project locally before loading it as an extension:
+
+```bash
+python3 -m http.server 8000
+```
+
+Then visit `http://localhost:8000/test.html` to open the built-in troubleshooting and test page.
+
 ### From Source (Developer Mode)
 
 1. **Download the Extension**
